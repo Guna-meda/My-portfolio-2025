@@ -19,7 +19,7 @@ export default function AppNavbar() {
   const navItems = [
     { name: "My work", link: "#work" },
     { name: "About", link: "#about" },
-    { name: "Contact", link: "#contact" },
+  { name: "Contact", link: "/contact" },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
