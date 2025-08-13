@@ -5,7 +5,7 @@ import { MaskContainer } from "@/components/ui/svg-mask-effect";
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden">
+    <section className="relative w-full h-screen bg-background flex flex-col items-center justify-center text-center overflow-hidden">
       <MaskContainer
         revealText={
           <p className="w-full px-6 text-center text-6xl font-extrabold text-slate-800 dark:text-white">
