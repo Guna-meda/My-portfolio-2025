@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MaskContainer } from "@/components/ui/svg-mask-effect";
 import VideoSection from "./VideoSection";
 import InstaSection from "./InstaSection";
+import SkillsSection from "./SkillsSection";
 
 export default function HeroSection() {
   return ( <>
@@ -27,7 +28,7 @@ export default function HeroSection() {
     <div>
     <VideoSection />
     <InstaSection/>
-
+    <SkillsSection />
     </div>
     </>
   );
