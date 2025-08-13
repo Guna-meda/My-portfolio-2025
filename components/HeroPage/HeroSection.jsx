@@ -5,6 +5,7 @@ import { MaskContainer } from "@/components/ui/svg-mask-effect";
 import VideoSection from "./VideoSection";
 import InstaSection from "./InstaSection";
 import SkillsSection from "./SkillsSection";
+import WorkAndAboutSection from "./WorkAndAboutSection";
 
 export default function HeroSection() {
   return ( <>
@@ -29,6 +30,7 @@ export default function HeroSection() {
     <VideoSection />
     <InstaSection/>
     <SkillsSection />
+    <WorkAndAboutSection />
     </div>
     </>
   );
