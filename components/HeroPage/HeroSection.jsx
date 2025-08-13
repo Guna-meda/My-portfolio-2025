@@ -2,9 +2,10 @@
 
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MaskContainer } from "@/components/ui/svg-mask-effect";
+import VideoSection from "./VideoSection";
 
 export default function HeroSection() {
-  return (
+  return ( <>
     <section className="relative w-full h-screen bg-background flex flex-col items-center justify-center text-center overflow-hidden">
       <MaskContainer
         revealText={
@@ -20,15 +21,12 @@ export default function HeroSection() {
         <span className="text-blue-500">clean, efficient code</span>.
       </MaskContainer>
 
-      {/* Overlay social links */}
-      <div className="absolute bottom-10 flex gap-4 z-10">
-        <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
-          <FaGithub size={30} />
-        </a>
-        <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">
-          <FaLinkedin size={30} />
-        </a>
-      </div>
+    
     </section>
+    <div>
+    <VideoSection />
+
+    </div>
+    </>
   );
 }
