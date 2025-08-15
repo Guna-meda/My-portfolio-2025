@@ -7,14 +7,28 @@ const InstaSection = () => {
     <div className="flex flex-col gap-6"> {/* reduced from gap-12 */}
       {/* Heading */}
       
-
+<div className="flex justify-center items-center py-4 px-4"> {/* reduced py-8 to py-4 */}
+        <p
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center leading-snug 
+          text-gray-900 dark:text-white transition-colors duration-300"
+        >
+          A{" "}
+          <Highlighter action="underline" color="#FF9800">
+            Digital Creator too
+          </Highlighter>
+          , check out{" "}
+          <Highlighter action="highlight" color="#87CEFA">
+            my Insta.
+          </Highlighter>
+        </p>
+      </div>
       {/* Insta Info Section */}
       <div className="flex flex-col md:flex-row items-center justify-center gap-6 px-4"> {/* reduced gap-10 to gap-6 */}
         {/* Left - Phone Image */}
         <div className="flex-shrink-0 flex justify-center">
           <div className="relative">
             <Image
-              src="/Phone.png"
+              src="/phone.png"
               alt="Instagram Screenshot"
               width={360} // slightly smaller
               height={720}
