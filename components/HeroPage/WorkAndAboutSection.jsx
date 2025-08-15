@@ -12,7 +12,8 @@ for tech with my knack for making things look cooler than they really are.`;
   const words = aboutText.split(" ");
 
   return (
-    <section className="min-h-[80vh] flex flex-col items-center justify-center bg-background px-6 py-24 md:py-32 text-center">
+   <section className="min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] flex flex-col items-center justify-center bg-background px-6 py-16 sm:py-24 md:py-32 text-center">
+
       {/* Animated Intro Text */}
       <h1
         className="text-white font-medium leading-relaxed tracking-wide max-w-3xl"

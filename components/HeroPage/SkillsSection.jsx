@@ -40,7 +40,8 @@ export default function SkillsSection() {
   );
 
   return (
-    <section className="bg-white dark:bg-background text-gray-900 dark:text-white py-20  px-6 md:px-20 lg:px-28 transition-colors duration-300">
+    <section className="bg-white dark:bg-background text-gray-900 dark:text-white py-12 sm:py-16 md:py-20 px-6 md:px-20 lg:px-28 transition-colors duration-300 mt-12">
+
       <div className="max-w-6xl mx-auto text-center">
         {/* Headings */}
         <p className="uppercase text-sm tracking-widest text-gray-500 dark:text-gray-400">

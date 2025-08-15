@@ -88,13 +88,14 @@ const VidCreator = () => {
       </section>
 
       {/* Video Masonry Section */}
-      <section className="px-4 sm:px-6 lg:px-8 flex justify-center mb-8">
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-4">
-          {videos.map((video, index) => (
-            <VideoCard key={index} src={video.src} ratio={video.ratio} />
-          ))}
-        </div>
-      </section>
+      <section className="px-2 sm:px-4 lg:px-8 flex justify-center mb-8">
+  <div className="columns-2 sm:columns-2 md:columns-3 gap-4 sm:gap-6 space-y-4">
+    {videos.map((video, index) => (
+      <VideoCard key={index} src={video.src} ratio={video.ratio} />
+    ))}
+  </div>
+</section>
+
     </>
   );
 };
