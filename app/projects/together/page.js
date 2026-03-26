@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { FaArrowLeft, FaArrowRight, FaGithub } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
 export default function TogethrProjectPage() {
   const images = [
@@ -79,7 +79,15 @@ export default function TogethrProjectPage() {
           >
             <FaGithub /> Code
           </a>
+           <a
+                    href="https://togethr-zeta.vercel.app"
+                    target="_blank"
+                    className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition"
+                  >
+                    <FaExternalLinkAlt /> Try It Out
+                  </a>
         </div>
+        
       </div>
 
       {/* Right - Media Section */}

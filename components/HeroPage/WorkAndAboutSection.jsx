@@ -4,10 +4,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 export default function AboutAndWorkSection() {
-  const aboutText = `Hi, I'm Guna, in my 2nd year of CSE at PES University. 
-I’m passionate about coding and building projects, not just crashing for fun. 
-When I’m not battling bugs, you’ll find me editing videos or running social media accounts — basically mixing my love 
-for tech with my knack for making things look cooler than they really are.`;
+  const aboutText = `Hey, I’m Guna , 2nd year CSE at PES.
+I enjoy building real projects and learning by actually doing, not just theory.
+I’m also into editing and content, so I care a lot about how things look and feel.`;
 
   const words = aboutText.split(" ");
 

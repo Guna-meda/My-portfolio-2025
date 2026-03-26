@@ -1,7 +1,9 @@
 import {
   SiExpress, SiNodedotjs, SiNextdotjs, SiReact, SiTypescript, SiJavascript,
   SiTailwindcss, SiFramer, SiGreensock, SiMongodb, SiRedux, SiSocketdotio,
-  SiGithub, SiFirebase, SiClerk, SiVercel, SiDavinciresolve, SiCanva
+  SiGithub, SiFirebase, SiClerk, SiVercel, SiDavinciresolve, SiCanva,
+  SiDocker,
+  SiRabbitmq
 } from "react-icons/si";
 export default function SkillsSection() {
   const techStack = [
@@ -18,6 +20,8 @@ export default function SkillsSection() {
     { name: "Zustand" },
     { name: "React Redux", icon: <SiRedux /> },
     { name: "Socket.io", icon: <SiSocketdotio /> },
+    {name: "Docker", icon: <SiDocker />},
+    {name: "RabbitMQ", icon: <SiRabbitmq />},
   ];
 
   const tools = [

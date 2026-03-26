@@ -68,23 +68,8 @@ export default function SpotifyCloneProject() {
 
         {/* Links */}
         <div className="space-y-4 mb-6">
-          {/* Visit Site */}
-          <a
-            href="https://spotify-clone-5g33.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block border border-gray-300 dark:border-gray-700 rounded-lg p-4 hover:shadow-md transition-shadow"
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Visit Site</p>
-                <p className="text-lg font-semibold text-[#1DB954]">
-                  spotify-clone-5g33.vercel.app
-                </p>
-              </div>
-              <span className="text-[#1DB954] font-semibold">↗</span>
-            </div>
-          </a>
+         
+         
 
           {/* Check Code */}
           <a
