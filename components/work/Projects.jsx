@@ -14,6 +14,11 @@ const projects = [
     img: "/images/nodejs.png",
     link: "/projects/nodejs-microservices",
   },
+  {
+    title: "AI-Goverend RBAC System",
+    img: "/images/rbac.png",
+    link: "/projects/ai-governed-rbac-system",
+  },
    {
     title: "Together",
     img: "/images/Together.png",
