@@ -1,7 +1,8 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const projects = [
   {
@@ -70,6 +71,30 @@ const experience = {
 
 // ─── Shared project card ──────────────────────────────────────────────────────
 function ProjectCard({ project, idx, hovered, setHovered, external = false }) {
+  const router = useRouter();
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  // ─── Touch detection (client-side only, avoids SSR issues) ───
+  useEffect(() => {
+    const detectTouchDevice = () => {
+      return (
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0 ||
+        "ontouchstart" in window
+      );
+    };
+    setIsTouchDevice(detectTouchDevice());
+  }, []);
+
+  // ─── Handle click navigation for touch devices ───
+  const handleTouchNavigation = () => {
+    if (!external) {
+      router.push(project.link);
+    } else {
+      window.open(project.link, "_blank");
+    }
+  };
+
   return (
     <motion.div
       key={idx}
@@ -78,8 +103,9 @@ function ProjectCard({ project, idx, hovered, setHovered, external = false }) {
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: idx * 0.08 }}
       className="relative group rounded-2xl overflow-hidden shadow-lg cursor-pointer"
-      onMouseEnter={() => setHovered(idx)}
-      onMouseLeave={() => setHovered(null)}
+      onMouseEnter={() => !isTouchDevice && setHovered(idx)}
+      onMouseLeave={() => !isTouchDevice && setHovered(null)}
+      onClick={() => isTouchDevice && handleTouchNavigation()}
     >
       {/* Background Image */}
       <div
@@ -92,27 +118,29 @@ function ProjectCard({ project, idx, hovered, setHovered, external = false }) {
       <h3 className="absolute bottom-4 left-4 text-white text-base sm:text-lg font-semibold tracking-wide z-10">
         {project.title}
       </h3>
-      {/* Hover Button */}
-      <AnimatePresence>
-        {hovered === idx && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.2 }}
-            className="absolute inset-0 flex items-center justify-center z-20"
-          >
-            <Link
-              href={project.link}
-              target={external ? "_blank" : undefined}
-              rel={external ? "noopener noreferrer" : undefined}
-              className="px-4 py-2 bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg shadow-md text-sm font-semibold hover:scale-105 transition-transform"
+      {/* Hover Button - Only show on desktop */}
+      {!isTouchDevice && (
+        <AnimatePresence>
+          {hovered === idx && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="absolute inset-0 flex items-center justify-center z-20"
             >
-              {external ? "Visit Website" : "Visit Project"}
-            </Link>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <Link
+                href={project.link}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noopener noreferrer" : undefined}
+                className="px-4 py-2 bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg shadow-md text-sm font-semibold hover:scale-105 transition-transform"
+              >
+                {external ? "Visit Website" : "Visit Project"}
+              </Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
     </motion.div>
   );
 }
