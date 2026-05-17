@@ -6,6 +6,11 @@ import { useRouter } from "next/navigation";
 
 const projects = [
   {
+    title: "MedRemind",
+    img: "/images/MedRemind.png",
+    link: "/projects/MedRemind",
+  },
+  {
     title: "IntervuAI",
     img: "/images/intervu.png",
     link: "/projects/IntervuAI",
