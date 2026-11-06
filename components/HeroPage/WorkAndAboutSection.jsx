@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 export default function AboutAndWorkSection() {
-  const aboutText = `Hey, I’m Guna , 2nd year CSE at PES.
+  const aboutText = `Hey, I’m Guna , 3rd year CSE at PES.
 I enjoy building real projects and learning by actually doing, not just theory.
 I’m also into editing and content, so I care a lot about how things look and feel.`;
 

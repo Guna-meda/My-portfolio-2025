@@ -3,8 +3,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import CurrentlyBuilding from "./CurrentlyBuilding";
 
 const projects = [
+  {
+    title: "Remore — AI-Powered WhatsApp Assistant",
+    img: "/images/remore.png",
+    link: "/projects/remore",
+  },
+  {
+    title: "Walkthrough-lib —  NPM package",
+    img: "/images/walkthrough-lib.jpg",
+    link: "/projects/walkthrough-lib",
+  },
   {
     title: "MedRemind",
     img: "/images/MedRemind.png",
@@ -30,17 +41,6 @@ const projects = [
     img: "/images/Together.png",
     link: "/projects/together",
   },
-  {
-    title: "Spotify clone",
-    img: "/images/spotify.png",
-    link: "/projects/spotify-clone",
-  },
- 
-  {
-    title: "3x-Player",
-    img: "/images/yt-player.png",
-    link: "/projects/yt-player",
-  },
 ];
 
 // Add your client websites here (same shape as projects)
@@ -57,22 +57,49 @@ const clientWebsites = [
   }
 ];
 
-const experience = {
-  role: "Full-Stack Developer",
-  company: "Candlestroke Technologies",
-  companyUrl: "https://candlestroketech.com",
-  period: "August 2025 - October 2025",
-  highlights: [
-    {
-      icon: "",
-      text: "Developed backend for Profit11 mobile application MVP (available on Play Store) using RESTful APIs, OTP-based login, and JWT-based authentication for secure session management.",
-    },
-    {
-      icon: "",
-      text: "Built the company website in Next.js — candlestroketech.com",
-    },
-  ],
-};
+// : fill in the real dates for the eGov Foundation internship.
+const EGOV_PERIOD = "August 2026 - September 2026";
+
+// Newest first.
+const experiences = [
+  {
+    role: "Software Engineering Intern",
+    company: "eGov Foundation",
+    companyUrl: "https://egov.org.in",
+    period: EGOV_PERIOD,
+    tech: ["Kafka", "Docker", "Microservices", "DIGIT"],
+    highlights: [
+      {
+        icon: "",
+        text: "Contributed to backend development and service integration for the DIGIT public service platform, working within a microservices architecture and a Docker development environment.",
+      },
+      {
+        icon: "",
+        text: "Designed batch and real-time Kafka processing pipelines with persistent database processing and idempotent message handling to ensure reliable, duplicate-safe complaint processing.",
+      },
+      {
+        icon: "",
+        text: "Implemented tenant-specific configuration, enabling new municipal deployments to onboard complaint types without application-code changes.",
+      },
+    ],
+  },
+  {
+    role: "Full-Stack Developer",
+    company: "Candlestroke Technologies",
+    companyUrl: "https://candlestroketech.com",
+    period: "August 2025 - October 2025",
+    highlights: [
+      {
+        icon: "",
+        text: "Developed backend for Profit11 mobile application MVP (available on Play Store) using RESTful APIs, OTP-based login, and JWT-based authentication for secure session management.",
+      },
+      {
+        icon: "",
+        text: "Built the company website in Next.js — candlestroketech.com",
+      },
+    ],
+  },
+];
 
 // ─── Shared project card ──────────────────────────────────────────────────────
 function ProjectCard({ project, idx, hovered, setHovered, external = false }) {
@@ -169,56 +196,81 @@ export default function ProjectsSection() {
           Experience
         </motion.h2>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="relative rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm shadow-lg overflow-hidden"
-        >
-          {/* Subtle left accent bar */}
-          <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-gray-400 via-gray-300 to-transparent dark:from-gray-500 dark:via-gray-600 rounded-l-2xl" />
-
-          <div className="px-6 sm:px-8 py-6 sm:py-8">
-            {/* Role + company row */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 mb-5">
-              <div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100">
-                  {experience.role}
-                </h3>
-                <a
-                  href={experience.companyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
-                >
-                  {experience.company} ↗
-                </a>
-              </div>
-              <span className="text-xs sm:text-sm font-medium text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full self-start sm:self-auto whitespace-nowrap">
-                {experience.period}
-              </span>
-            </div>
-
-            {/* Highlights */}
-            <ul className="space-y-3">
-              {experience.highlights.map((h, i) => (
-                <motion.li
-                  key={i}
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+        <div className="relative flex flex-col gap-6 sm:gap-8">
+          {/* Thin timeline line connecting the cards (md+ only) */}
+          <div aria-hidden="true" className="hidden md:block absolute -left-6 top-6 bottom-6 w-px bg-gradient-to-b from-gray-300 via-gray-200 to-transparent dark:from-gray-600 dark:via-gray-700" />
+          {experiences.map((exp, expIdx) => (
+            <div key={exp.company} className="relative">
+              <span aria-hidden="true" className="hidden md:block absolute -left-[28px] top-8 h-2 w-2 rounded-full bg-gray-300 dark:bg-gray-600 ring-4 ring-white dark:ring-[var(--background)]" />
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
-                  className="flex items-start gap-3 text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed"
+                  transition={{ duration: 0.5, delay: 0.1 + expIdx * 0.08 }}
+                  className="relative rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm shadow-lg overflow-hidden"
                 >
-                  <span className="mt-0.5 text-base shrink-0">{h.icon}</span>
-                  <span>{h.text}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-        </motion.div>
+                  {/* Subtle left accent bar */}
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-gray-400 via-gray-300 to-transparent dark:from-gray-500 dark:via-gray-600 rounded-l-2xl" />
+
+                  <div className="px-6 sm:px-8 py-6 sm:py-8">
+                    {/* Role + company row */}
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 mb-5">
+                      <div>
+                        <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100">
+                          {exp.role}
+                        </h3>
+                        <a
+                          href={exp.companyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+                        >
+                          {exp.company} ↗
+                        </a>
+                        {exp.tech && (
+                          <ul className="mt-3 flex flex-wrap gap-2" aria-label="Technologies">
+                            {exp.tech.map((t) => (
+                              <li
+                                key={t}
+                                className="text-xs font-medium text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full"
+                              >
+                                {t}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                      <span className="text-xs sm:text-sm font-medium text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full self-start sm:self-auto whitespace-nowrap">
+                        {exp.period}
+                      </span>
+                    </div>
+
+                    {/* Highlights */}
+                    <ul className="space-y-3">
+                      {exp.highlights.map((h, i) => (
+                        <motion.li
+                          key={i}
+                          initial={{ opacity: 0, x: -12 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
+                          className="flex items-start gap-3 text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed"
+                        >
+                          <span className="mt-0.5 text-base shrink-0">{h.icon}</span>
+                          <span>{h.text}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+
+            </div>
+          ))}
+        </div>
       </section>
+
+      {/* ── Currently Building ─────────────────────────────────────────────── */}
+      <CurrentlyBuilding />
 
       {/* ── Projects Section ──────────────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">

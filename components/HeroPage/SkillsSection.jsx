@@ -17,7 +17,7 @@ export default function SkillsSection() {
     { name: "Framer Motion", icon: <SiFramer /> },
     { name: "GSAP", icon: <SiGreensock /> },
     { name: "MongoDB", icon: <SiMongodb /> },
-    { name: "Zustand" },
+    { name: "Kafka" },
     { name: "React Redux", icon: <SiRedux /> },
     { name: "Socket.io", icon: <SiSocketdotio /> },
     {name: "Docker", icon: <SiDocker />},

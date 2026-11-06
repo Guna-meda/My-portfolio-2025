@@ -127,3 +127,42 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* ── Shared utilities for featured / building / media components ───────── */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@keyframes shimmer-slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+@keyframes border-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes status-ping {
+  0% { transform: scale(1); opacity: 0.7; }
+  80%, 100% { transform: scale(2.4); opacity: 0; }
+}
+@keyframes flow-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+.shimmer-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  animation: shimmer-slide 2.2s ease-in-out infinite;
+}
+.status-ping { animation: status-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite; }
+.border-glow-spin { animation: border-spin 6s linear infinite; }
+.flow-pulse { animation: flow-pulse 2.4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer-bar::after,
+  .status-ping,
+  .border-glow-spin,
+  .flow-pulse { animation: none !important; }
+  .status-ping { opacity: 0; }
+}
